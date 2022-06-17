@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/2000/svg">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <style>
+        * {
+            font-family: 'Hi Melody', cursive;
+            box-sizing: border-box;
+        }
+
+        div {
+            display: block;
+        }
+
+        .header {
+            padding: 30px 48px 30px 48px;
+            display: flex;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            align-items: center;
+            position: fixed;
+        }
+
+        .wrap-order-toggle {
+            display: flex;
+            -webkit-box-align: center;
+        }
+
+        .header .btn-outline-danger {
+            color: navy;
+        }
+
+        body {
+            background-color: #faf6f6;
+            padding-right: 30px;
+            padding-left: 30px;
+        }
+
+        :root {
+            --color-primary: #f6aca2;
+            --color-secondary: #f49b90;
+            --color-tertiary: #f28b7d;
+            --color-quaternary: #f07a6a;
+            --color-quinary: #ee6352;
+        }
+
+        .text_shadows {
+            text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary),
+            9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+            font-family: bungee, sans-serif;
+            font-weight: 1000;
+            text-transform: uppercase;
+            font-size: calc(0.5rem + 3vw);
+            text-align: center;
+            margin: 0;
+            color: var(--color-primary);
+            animation: shadows 1.2s ease-in infinite, move 1.2s ease-in infinite;
+            letter-spacing: 0.4rem;
+        }
+
+        @keyframes shadows {
+            0% {
+                text-shadow: none;
+            }
+            10% {
+                text-shadow: 3px 3px 0 var(--color-secondary);
+            }
+            20% {
+                text-shadow: 3px 3px 0 var(--color-secondary),
+                6px 6px 0 var(--color-tertiary);
+            }
+            30% {
+                text-shadow: 3px 3px 0 var(--color-secondary),
+                6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+            }
+            40% {
+                text-shadow: 3px 3px 0 var(--color-secondary),
+                6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary),
+                12px 12px 0 var(--color-quinary);
+            }
+            50% {
+                text-shadow: 3px 3px 0 var(--color-secondary),
+                6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary),
+                12px 12px 0 var(--color-quinary);
+            }
+            60% {
+                text-shadow: 3px 3px 0 var(--color-secondary),
+                6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary),
+                12px 12px 0 var(--color-quinary);
+            }
+            70% {
+                text-shadow: 3px 3px 0 var(--color-secondary),
+                6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+            }
+            80% {
+                text-shadow: 3px 3px 0 var(--color-secondary),
+                6px 6px 0 var(--color-tertiary);
+            }
+            90% {
+                text-shadow: 3px 3px 0 var(--color-secondary);
+            }
+            100% {
+                text-shadow: none;
+            }
+        }
+
+        @keyframes move {
+            0% {
+                transform: translate(0px, 0px);
+            }
+            40% {
+                transform: translate(-8px, -8px);
+            }
+            50% {
+                transform: translate(-8px, -8px);
+            }
+            60% {
+                transform: translate(-8px, -8px);
+            }
+            100% {
+                transform: translate(0px, 0px);
+            }
+        }
+
+        .img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        h1 {
+            font-weight: bold;
+            color: #f67878;
+            margin: 20px auto;
+            padding-left: 20%;
+            display: inline-block;
+        }
+
+        p {
+            font-size: 1.5em;
+        }
+
+        .b {
+            display: inline-block;
+        }
+
+        .product-describe {
+
+            max-width: 800px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #c-num {
+            width: 200px;
+        }
+
+        button {
+            width: 80px;
+            background-color: #4288e9;
+            color: floralwhite;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+    <title>ShoppingMall</title>
+    <script>
+        function makeOrder() {
+            let name = $('#c-name').val()
+            let number = $('#c-num').val()
+            let address = $('#c-address').val()
+            let phone = $('#c-phone').val()
+
+            if (name == '') {
+                alert('이름을 입력해주세요!')
+                $('.c-name').focus()
+                return
+            } else if (number == '') {
+                alert('개수를 골라주세요!')
+                $('.c-num').focus()
+                return
+            } else if (address == '') {
+                alert('주소를 입력해주세요!')
+                $('.c-address').focus()
+                return
+            } else if (phone == '') {
+                alert('전화번호를 입력해주세요!')
+                $('.c-phone').focus()
+                return
+            } else if (!isCellPhone(phone)) {
+                alert('010-0000-0000 형식으로 입력해주세요!')
+                return
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/order",
+                data: {
+                    name_give: name, num_give: number, address_give: address, phone_give: phone
+                },
+                success: function (response) {
+                    if (response['result'] == 'success') {
+                        alert(response["msg"]);
+                        window.location.reload();
+                    }
+                }
+            })
+        }
+
+        function isCellPhone(p) {
+            let regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})[-][0-9]{3,4}[-][0-9]{4}$/;
+            return regExp.test(p);
+        }
+
+        function showOrder() {
+            $.ajax({
+                type: "GET",
+                url: "/order",
+                data: {},
+                success: function (response) {
+                    if(response['result'] == 'success') {
+                    let orders = response['all_orders'];
+                    var today = new Date();
+                    var year = today.getFullYear();
+                    var month = ('0' + (today.getMonth() + 1)).slice(-2);
+                    var day = ('0' + today.getDate()).slice(-2);
+
+                    var prettytoday = year + '-' + month + '-' + day;
+
+                    for (let i = 0; i < orders.length; i++) {
+                        let name = orders[i]['name']
+                        let number = orders[i]['number']
+
+                        let temp_html = `<tr>
+                            <th scope="row">${prettytoday}</th>
+                            <td>${name}</td>
+                            <td>${number}</td>
+                        </tr>`
+
+                        $('#tbody').append(temp_html)
+                    }
+                } else {
+                        alert('ERROR')
+                    }
+                }
+            })
+        }
+
+        //로딩되자마자 불러오기
+        $(document).ready(function () {
+            calculator();
+            showOrder();
+        })
+
+        function calculator() {
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/rate",
+                data: {},
+                success: function (response) {
+                    let change = response['rate']
+                    change_html = `1$=${change}&#x20a9;`
+                    $('.exchange').append(change_html)
+                }
+            })
+        }
+
+        function popup() {
+            let text;
+            let
+        }
+
+        //       function myOrder() {
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "/order/my",
+        //         data: {},
+        //         success: function (response) {
+        //             if (response['result'] == 'success') {
+        //                 let orders = response['order']
+        //                 for (let i = 0; i < orders.length; i++) {
+        //                     let name = orders[i]['name']
+        //                     let number = orders[i]['number']
+        //                     let address = orders[i]['address']
+        //                     let phone = orders[i]['phone']
+        //
+        //                     let temp_html = ``
+        //
+        //                     $('').append(temp_html)
+        //                 }
+        //             } else
+        //             alert('존재하지 않는 이름입니다.')
+        //         }
+        //     })
+        // }
+// https://www.w3schools.com/howto/howto_js_popup_form.asp
+    </script>
+</head>
+
+<body>
+<div class="layout-center" style="background-color: #faebeb">
+    <header class="d-flex">
+        <div class="p-2 w-100"
+             style="align-items: center; justify-content: space-evenly; display: flex;">
+            <h3 class="title">
+            </h3>
+            <container></container>
+        </div>
+        <div onclick="myOrder()" class="p-2 flex-shrink-1" style="align-items: center; display: flex; cursor: pointer">
+            <h5 class="text_shadows">MY ORDER</h5>
+        </div>
+    </header>
+    <div class="layout-2col layout-swap">
+        <main class="layout-2col__full">
+            <div class="block block-views first odd">
+                <div class="view-content"></div>
+            </div>
+            <article class="main_order_form">
+                <section class="img">
+                    <img src="https://media.istockphoto.com/photos/white-cloud-isolated-on-pink-background-picture-id1300816588?b=1&k=20&m=1300816588&s=170667a&w=0&h=4cIRtzaCU_9uy5RiMVj65ZKQSwuTOFdkdqOZKY6N_Kw=">
+                </section>
+                <!--<canvas id="canvas" width="300" height="300"></canvas>-->
+                <!--<script type="importmap">-->
+                <!--  {-->
+                <!--  	"imports": {-->
+                <!--      "three": "https://unpkg.com/three@0.138.3/build/three.module.js",-->
+                <!--      "GLTFLoader":-->
+                <!--      "https://unpkg.com/three@0.141.0/examples/jsm/loaders/GLTFLoader.js"-->
+                <!--    }-->
+                <!--  }-->
+                <!--</script>-->
+                <!--<script type="module">-->
+                <!--    import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader.js";-->
+                <!--    import * as THREE from "three";-->
+
+                <!--    let scene = new THREE.Scene();-->
+                <!--    let renderer = new THREE.WebGLRenderer({-->
+                <!--        canvas: document.querySelector("#canvas"),-->
+                <!--        antialias: true,-->
+                <!--    });-->
+
+                <!--    renderer.outputEncoding = THREE.sRGBEncoding;-->
+
+                <!--    let camera = THREE.PerspectiveCamera(30, 1);-->
+                <!--    camera.position.set(0, 0, 10);-->
+
+                <!--    scene.background = new THREE.Color("skyblue");-->
+
+                <!--    let loader = new GLTFLoader();-->
+                <!--    loader.load("cute_cloud/scene.gltf", function(gltf) {-->
+                <!--        scene.add(gltf.scene);-->
+                <!--        renderer.render(scene, camera);-->
+                <!--    });-->
+                <!--</script>-->
+                <section>
+                    <h1>구름 &#9729판매중&#9729</h1>
+                    <p class="b" style="color: #0065e2">가격: <b>1,000,000원</b> / 개</p>
+                    <div class="product-describe">
+                        <p>최고급 구름으로 새하얗고 폭신폭신하며 보드랍고 달콤하죠. 구름빵을 만들고 싶다면 필수적으로 구매해야 합니다.
+                            10구름을 구매하신다면 2구름을 무료로 더 드립니다. 사실 구름빵을 만들지 않더라도 그냥 그 자체로도
+                            솜사탕보다도 맛있답니다. 어서 빨리 품절되기 전에 구매하세요!</p>
+                    </div>
+                </section>
+                <section>
+                    <div class="order-title">
+                        <h1>주문하기</h1>
+                        <p class="exchange" style="display:inline-block; color: #0065e2">환율 계산기: </p>
+                    </div>
+                    <div class="order-table" style="padding-bottom: 25px">
+                        <table border="0" align="center" width=auto cellpadding="8">
+                            <tr>
+                                <td><label class="c-name">주문자 성함: </label></td>
+                                <td><input type="text" class="c-name" id="c-name" size="30"></td>
+                            </tr>
+                            <tr>
+                                <td><label class="c-num">수량: </label></td>
+                                <td><input type="range" class="c-num" id="c-num"
+                                           tep="1" value="1" min="1" max="10"
+                                           oninput="this.nextElementSibling.value = this.value">
+                                    <output style="font-size: 1.5em">1</output>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="c-address">주소: </label></td>
+                                <td>
+                                    <input type="text" class="c-address" id="c-address" size="30">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="c-phone">전화번호: </label></td>
+                                <td>
+                                    <input type="tel" class="c-phone" id="c-phone" size="30">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+                <section style="padding-bottom: 25px; text-align: center">
+                    <button onclick="makeOrder()" type="button" class="order">주문하기</button>
+                </section>
+                <div style="justify-content: center; display: flex">
+                    <table class="table table-hover" style="width: 500px;">
+                        <caption>주문 이력</caption>
+                        <thead>
+                        <tr>
+                            <th scope="col">주문 날짜</th>
+                            <th scope="col">성함</th>
+                            <th scope="col">수량</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </main>
+    </div>
+</div>
+<footer class="nothing-just-bottom" style="box-sizing: border-box; display: block; height: 25px"></footer>
+</body>
+
+</html>
