@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cute Cloud
+* source:	https://sketchfab.com/3d-models/cute-cloud-691c72bd72de414db77214b647c780b8
+* author:	mehdiafshar (https://sketchfab.com/mehdiafshar)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cute Cloud" (https://sketchfab.com/3d-models/cute-cloud-691c72bd72de414db77214b647c780b8) by mehdiafshar (https://sketchfab.com/mehdiafshar) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

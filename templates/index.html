@@ -1,6 +1,4 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/2000/svg">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -29,24 +27,6 @@
 
         div {
             display: block;
-        }
-
-        .header {
-            padding: 30px 48px 30px 48px;
-            display: flex;
-            justify-content: space-between;
-            -webkit-box-align: center;
-            align-items: center;
-            position: fixed;
-        }
-
-        .wrap-order-toggle {
-            display: flex;
-            -webkit-box-align: center;
-        }
-
-        .header .btn-outline-danger {
-            color: navy;
         }
 
         body {
@@ -239,28 +219,28 @@
                 url: "/order",
                 data: {},
                 success: function (response) {
-                    if(response['result'] == 'success') {
-                    let orders = response['all_orders'];
-                    var today = new Date();
-                    var year = today.getFullYear();
-                    var month = ('0' + (today.getMonth() + 1)).slice(-2);
-                    var day = ('0' + today.getDate()).slice(-2);
+                    if (response['result'] == 'success') {
+                        let orders = response['all_orders'];
+                        var today = new Date();
+                        var year = today.getFullYear();
+                        var month = ('0' + (today.getMonth() + 1)).slice(-2);
+                        var day = ('0' + today.getDate()).slice(-2);
 
-                    var prettytoday = year + '-' + month + '-' + day;
+                        var prettytoday = year + '-' + month + '-' + day;
 
-                    for (let i = 0; i < orders.length; i++) {
-                        let name = orders[i]['name']
-                        let number = orders[i]['number']
+                        for (let i = 0; i < orders.length; i++) {
+                            let name = orders[i]['name']
+                            let number = orders[i]['number']
 
-                        let temp_html = `<tr>
+                            let temp_html = `<tr>
                             <th scope="row">${prettytoday}</th>
-                            <td>${name}</td>
-                            <td>${number}</td>
+                            <td>${name} 님</td>
+                            <td>${number} 개</td>
                         </tr>`
 
-                        $('#tbody').append(temp_html)
-                    }
-                } else {
+                            $('#tbody').append(temp_html)
+                        }
+                    } else {
                         alert('ERROR')
                     }
                 }
@@ -288,7 +268,6 @@
 
         function popup() {
             let text;
-            let
         }
 
         //       function myOrder() {
@@ -314,21 +293,16 @@
         //         }
         //     })
         // }
-// https://www.w3schools.com/howto/howto_js_popup_form.asp
+        // https://www.w3schools.com/howto/howto_js_popup_form.asp
     </script>
 </head>
 
 <body>
-<div class="layout-center" style="background-color: #faebeb">
-    <header class="d-flex">
-        <div class="p-2 w-100"
-             style="align-items: center; justify-content: space-evenly; display: flex;">
-            <h3 class="title">
-            </h3>
-            <container></container>
-        </div>
-        <div onclick="myOrder()" class="p-2 flex-shrink-1" style="align-items: center; display: flex; cursor: pointer">
-            <h5 class="text_shadows">MY ORDER</h5>
+<div class="layout-center" style="background-color: #faebeb;">
+    <header class="d-flex bd-highlight" style="position: sticky; top: 0">
+        <div class="p-2 w-100 bd-highlight" style="align-items: center; justify-content: end; display: flex"></div>
+        <div onclick="myOrder()" class="p-2 flex-shrink-1" style="align-items: center; display: flex; cursor: pointer;">
+            <h5 class="text_shadows">MY ORDERS</h5>
         </div>
     </header>
     <div class="layout-2col layout-swap">
@@ -340,39 +314,75 @@
                 <section class="img">
                     <img src="https://media.istockphoto.com/photos/white-cloud-isolated-on-pink-background-picture-id1300816588?b=1&k=20&m=1300816588&s=170667a&w=0&h=4cIRtzaCU_9uy5RiMVj65ZKQSwuTOFdkdqOZKY6N_Kw=">
                 </section>
-                <!--<canvas id="canvas" width="300" height="300"></canvas>-->
-                <!--<script type="importmap">-->
-                <!--  {-->
-                <!--  	"imports": {-->
-                <!--      "three": "https://unpkg.com/three@0.138.3/build/three.module.js",-->
-                <!--      "GLTFLoader":-->
-                <!--      "https://unpkg.com/three@0.141.0/examples/jsm/loaders/GLTFLoader.js"-->
-                <!--    }-->
-                <!--  }-->
-                <!--</script>-->
-                <!--<script type="module">-->
-                <!--    import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader.js";-->
-                <!--    import * as THREE from "three";-->
 
-                <!--    let scene = new THREE.Scene();-->
-                <!--    let renderer = new THREE.WebGLRenderer({-->
-                <!--        canvas: document.querySelector("#canvas"),-->
-                <!--        antialias: true,-->
-                <!--    });-->
+                <canvas id="canvas" width="300" height="300"></canvas>
+                <script src="static/script.js"></script>
+                <!--                <script type="importmap">-->
+                <!--              {-->
+                <!--              	"imports": {-->
+                <!--                  "three": "https://unpkg.com/three@0.141.0/build/three.module.js",-->
+                <!--                  "GLTFLoader": "https://unpkg.com/three@0.141.0/examples/jsm/loaders/GLTFLoader.js"-->
+                <!--                }-->
+                <!--              }-->
 
-                <!--    renderer.outputEncoding = THREE.sRGBEncoding;-->
+                <!--                </script>-->
+                <!--                <script type="module">-->
+                <!--                    import {GLTFLoader} from "GLTFLoader";-->
+                <!--                    import * as THREE from "three";-->
 
-                <!--    let camera = THREE.PerspectiveCamera(30, 1);-->
-                <!--    camera.position.set(0, 0, 10);-->
+                <!--                    let scene = new THREE.Scene();-->
+                <!--                    scene.background = new THREE.Color("skyblue");-->
+                <!--                    let camera = new THREE.PerspectiveCamera(30, 1);-->
+                <!--                    camera.position.set(0, 0, 0);-->
+                <!--                    let renderer = new THREE.WebGLRenderer({-->
+                <!--                        canvas: document.querySelector("#canvas"),-->
+                <!--                        antialias: true-->
+                <!--                    });-->
+                <!--                    renderer.outputEncoding = THREE.sRGBEncoding;-->
 
-                <!--    scene.background = new THREE.Color("skyblue");-->
+                <!--                    let loader = new GLTFLoader();-->
+                <!--                    loader.load("cute_cloud/scene.gltf", function (gltf) {-->
+                <!--                        scene.add(gltf.scene);-->
+                <!--                        function animate() {-->
+                <!--                            requestAnimationFrame(animate)-->
+                <!--                            gltf.scene.rotation.y += 0.001;-->
+                <!--                            renderer.render(scene, camera);-->
+                <!--                        }-->
+                <!--                        animate();-->
+                <!--                    });-->
 
-                <!--    let loader = new GLTFLoader();-->
-                <!--    loader.load("cute_cloud/scene.gltf", function(gltf) {-->
-                <!--        scene.add(gltf.scene);-->
-                <!--        renderer.render(scene, camera);-->
-                <!--    });-->
-                <!--</script>-->
+                <!--                    let light = new THREE.AmbientLight();-->
+                <!--                    light.color = 0xffff00;-->
+                <!--                    light.intensity = 5;-->
+
+                <!--                </script>-->
+                <script>
+                    import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+                    const scene = new THREE.Scene();
+                    scene.background = new THREE.Color('skyblue');
+                    const camera = new THREE.PerspectiveCamera(30, 1);
+                    camera.position.set(0, 0, 0);
+                    const renderer = new THREE.WebGLRenderer({
+                        canvas: document.querySelector("#canvas"),
+                        antialias: true
+                    });
+                    renderer.outputEncoding = THREE.sRGBEncoding;
+
+                    const loader = new GLTFLoader();
+                    loader.load("final/cute_cloud/scene.gltf", function (gltf) {
+                        scene.add(gltf.scene);
+
+                        function animate() {
+                            requestAnimationFrame(animate);
+                            gltf.scene.rotation.y += 0.001;
+                            renderer.render(scene, camera);
+                        }
+
+                        animate();
+                    });
+
+                </script>
                 <section>
                     <h1>구름 &#9729판매중&#9729</h1>
                     <p class="b" style="color: #0065e2">가격: <b>1,000,000원</b> / 개</p>
@@ -422,7 +432,7 @@
                     <button onclick="makeOrder()" type="button" class="order">주문하기</button>
                 </section>
                 <div style="justify-content: center; display: flex">
-                    <table class="table table-hover" style="width: 500px;">
+                    <table class="table table-hover" style="width: 600px;">
                         <caption>주문 이력</caption>
                         <thead>
                         <tr>
