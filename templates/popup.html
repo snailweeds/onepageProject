@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <title>Popup</title>
+
+    <script>
+        const you = prompt("주문하신 연락처를 입력해주세요..", "010-****-****");
+        if (you == null) {
+            window.parent.close();
+        } else {
+            showMy();
+        }
+
+        function showMy() {
+            $.ajax({
+                type: "GET",
+                url: "/order/my?phone_give=${you}",
+                data: {},
+                success: function (response) {
+                    console.log(response)
+                    if (response['result'] == 'success') {
+                        let orders = response['order'];
+                        for (let i = 0; i < orders.length; i++) {
+                            let date = orders[i]['date']
+                            let name = orders[i]['name']
+                            let number = orders[i]['number']
+                            let address = orders[i]['address']
+                            let phone = orders[i]['phone']
+
+                            let temp_html = `<tr>
+                            <th scope="row">${date}</th>
+                            <td>${name}</td>
+                            <td>${number} 개</td>
+                            <td>${address}</td>
+                            <td>${phone}</td>
+                        </tr>`
+
+                            $('#tbody').append(temp_html)
+                        }
+                    } else {
+                        alert('존재하지 않는 연락처입니다.')
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div style="justify-content: center; display: flex">
+    <table class="table table-hover" style="width: 600px;">
+        <thead>
+        <tr>
+            <th scope="col">주문 날짜</th>
+            <th scope="col">이름</th>
+            <th scope="col">수량</th>
+            <th scope="col">주소</th>
+            <th scope="col">연락처</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

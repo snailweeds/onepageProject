@@ -126,6 +126,35 @@
             align-items: center;
             justify-content: center;
             padding: 10px;
+            margin-bottom: 3%;
+
+        }
+
+        @media (min-width: 1020px) {
+            .layout-2col__full {
+                position: relative;
+                top: -80px;
+            }
+        }
+
+        @media (max-width: 630px) {
+            img {width: 25rem}
+        }
+
+        @media (max-width: 530px) {
+            img {width: 21rem}
+        }
+
+        @media (max-width: 450px) {
+            img {width: 18rem}
+        }
+
+        @media (max-width: 390px) {
+            img {width: 16rem}
+        }
+
+        @media (max-width: 300px) {
+            img {width: 11rem}
         }
 
         h1 {
@@ -167,6 +196,12 @@
     <title>ShoppingMall</title>
     <script>
         function makeOrder() {
+            var today = new Date();
+                        var year = today.getFullYear();
+                        var month = ('0' + (today.getMonth() + 1)).slice(-2);
+                        var day = ('0' + today.getDate()).slice(-2);
+
+                        var prettytoday = year + '-' + month + '-' + day;
             let name = $('#c-name').val()
             let number = $('#c-num').val()
             let address = $('#c-address').val()
@@ -197,7 +232,7 @@
                 type: "POST",
                 url: "/order",
                 data: {
-                    name_give: name, num_give: number, address_give: address, phone_give: phone
+                    date_give: prettytoday, name_give: name, num_give: number, address_give: address, phone_give: phone
                 },
                 success: function (response) {
                     if (response['result'] == 'success') {
@@ -221,19 +256,13 @@
                 success: function (response) {
                     if (response['result'] == 'success') {
                         let orders = response['all_orders'];
-                        var today = new Date();
-                        var year = today.getFullYear();
-                        var month = ('0' + (today.getMonth() + 1)).slice(-2);
-                        var day = ('0' + today.getDate()).slice(-2);
-
-                        var prettytoday = year + '-' + month + '-' + day;
-
                         for (let i = 0; i < orders.length; i++) {
+                            let date = orders[i]['date']
                             let name = orders[i]['name']
                             let number = orders[i]['number']
 
                             let temp_html = `<tr>
-                            <th scope="row">${prettytoday}</th>
+                            <th scope="row">${date}</th>
                             <td>${name} 님</td>
                             <td>${number} 개</td>
                         </tr>`
@@ -267,7 +296,10 @@
         }
 
         function popup() {
-            let text;
+            var url = "popup.html";
+            var name = "popup test";
+            var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+            window.open(url, name, option);
         }
 
         //       function myOrder() {
@@ -301,7 +333,7 @@
 <div class="layout-center" style="background-color: #faebeb;">
     <header class="d-flex bd-highlight" style="position: sticky; top: 0">
         <div class="p-2 w-100 bd-highlight" style="align-items: center; justify-content: end; display: flex"></div>
-        <div onclick="myOrder()" class="p-2 flex-shrink-1" style="align-items: center; display: flex; cursor: pointer;">
+        <div onclick="popup()" class="p-2 flex-shrink-1" style="align-items: center; display: flex; cursor: pointer;">
             <h5 class="text_shadows">MY ORDERS</h5>
         </div>
     </header>
@@ -312,84 +344,17 @@
             </div>
             <article class="main_order_form">
                 <section class="img">
-                    <img src="https://media.istockphoto.com/photos/white-cloud-isolated-on-pink-background-picture-id1300816588?b=1&k=20&m=1300816588&s=170667a&w=0&h=4cIRtzaCU_9uy5RiMVj65ZKQSwuTOFdkdqOZKY6N_Kw=">
+                    <img src="https://media.istockphoto.com/photos/white-cloud-isolated-on-pink-background-picture-id1300816588?b=1&k=20&m=1300816588&s=170667a&w=0&h=4cIRtzaCU_9uy5RiMVj65ZKQSwuTOFdkdqOZKY6N_Kw="
+                         style="border-style: outset; border-radius: 10px;">
                 </section>
 
-                <canvas id="canvas" width="300" height="300"></canvas>
-                <script src="static/script.js"></script>
-                <!--                <script type="importmap">-->
-                <!--              {-->
-                <!--              	"imports": {-->
-                <!--                  "three": "https://unpkg.com/three@0.141.0/build/three.module.js",-->
-                <!--                  "GLTFLoader": "https://unpkg.com/three@0.141.0/examples/jsm/loaders/GLTFLoader.js"-->
-                <!--                }-->
-                <!--              }-->
-
-                <!--                </script>-->
-                <!--                <script type="module">-->
-                <!--                    import {GLTFLoader} from "GLTFLoader";-->
-                <!--                    import * as THREE from "three";-->
-
-                <!--                    let scene = new THREE.Scene();-->
-                <!--                    scene.background = new THREE.Color("skyblue");-->
-                <!--                    let camera = new THREE.PerspectiveCamera(30, 1);-->
-                <!--                    camera.position.set(0, 0, 0);-->
-                <!--                    let renderer = new THREE.WebGLRenderer({-->
-                <!--                        canvas: document.querySelector("#canvas"),-->
-                <!--                        antialias: true-->
-                <!--                    });-->
-                <!--                    renderer.outputEncoding = THREE.sRGBEncoding;-->
-
-                <!--                    let loader = new GLTFLoader();-->
-                <!--                    loader.load("cute_cloud/scene.gltf", function (gltf) {-->
-                <!--                        scene.add(gltf.scene);-->
-                <!--                        function animate() {-->
-                <!--                            requestAnimationFrame(animate)-->
-                <!--                            gltf.scene.rotation.y += 0.001;-->
-                <!--                            renderer.render(scene, camera);-->
-                <!--                        }-->
-                <!--                        animate();-->
-                <!--                    });-->
-
-                <!--                    let light = new THREE.AmbientLight();-->
-                <!--                    light.color = 0xffff00;-->
-                <!--                    light.intensity = 5;-->
-
-                <!--                </script>-->
-                <script>
-                    import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
-
-                    const scene = new THREE.Scene();
-                    scene.background = new THREE.Color('skyblue');
-                    const camera = new THREE.PerspectiveCamera(30, 1);
-                    camera.position.set(0, 0, 0);
-                    const renderer = new THREE.WebGLRenderer({
-                        canvas: document.querySelector("#canvas"),
-                        antialias: true
-                    });
-                    renderer.outputEncoding = THREE.sRGBEncoding;
-
-                    const loader = new GLTFLoader();
-                    loader.load("final/cute_cloud/scene.gltf", function (gltf) {
-                        scene.add(gltf.scene);
-
-                        function animate() {
-                            requestAnimationFrame(animate);
-                            gltf.scene.rotation.y += 0.001;
-                            renderer.render(scene, camera);
-                        }
-
-                        animate();
-                    });
-
-                </script>
                 <section>
-                    <h1>구름 &#9729판매중&#9729</h1>
+                    <h1>구름 판매중 &#60;판매중&#62;</h1>
                     <p class="b" style="color: #0065e2">가격: <b>1,000,000원</b> / 개</p>
                     <div class="product-describe">
                         <p>최고급 구름으로 새하얗고 폭신폭신하며 보드랍고 달콤하죠. 구름빵을 만들고 싶다면 필수적으로 구매해야 합니다.
                             10구름을 구매하신다면 2구름을 무료로 더 드립니다. 사실 구름빵을 만들지 않더라도 그냥 그 자체로도
-                            솜사탕보다도 맛있답니다. 어서 빨리 품절되기 전에 구매하세요!</p>
+                            솜사탕보다 맛있답니다. 품절되기 전에 어서 빨리 구매하세요!</p>
                     </div>
                 </section>
                 <section>

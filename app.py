@@ -12,17 +12,22 @@ db = client.dbsparta
 @app.route('/')
 def homework():
     return render_template('index.html')
+@app.route('/popup.html')
+def popup_page():
+    return render_template('popup.html')
 
 
 # 주문하기(POST) API
 @app.route('/order', methods=['POST'])
 def save_order():
+    date_receive = request.form['date_give']
     name_receive = request.form['name_give']
     num_receive = request.form['num_give']
     address_receive = request.form['address_give']
     phone_receive = request.form['phone_give']
 
     doc = {
+        'date' : date_receive,
         'name' : name_receive,
         'number' : num_receive,
         'address' : address_receive,
@@ -39,11 +44,12 @@ def view_orders():
     allorders = list(db.onepage.find({}, {'_id': False}))
     return jsonify({'result': 'success', 'all_orders': allorders})
 
+# 내 주문 보기
 @app.route('/order/my', methods=['GET'])
 def view_myorder():
-    name_receive = request.form['name_give']
-    myorder = list(db.onepage.find({'name': name_receive}, {'_id': False}))
-    return jsonify({'order': myorder})
+    phone_receive = request.args.get('phone_give')
+    myorder = list(db.onepage.find({'phone': phone_receive}, {'_id': False}))
+    return jsonify({'result': 'success', 'order': myorder})
 
 
 if __name__ == '__main__':
