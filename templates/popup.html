@@ -32,12 +32,12 @@
 
         function showMy() {
             $.ajax({
-                type: "GET",
-                url: "/order/my?phone_give=${you}",
-                data: {},
+                type: "POST",
+                url: "/order/my",
+                data: {phone_give: you},
                 success: function (response) {
                     console.log(response)
-                    if (response['result'] == 'success') {
+                    if (response['order']['length'] != 0) {
                         let orders = response['order'];
                         for (let i = 0; i < orders.length; i++) {
                             let date = orders[i]['date']
@@ -58,6 +58,7 @@
                         }
                     } else {
                         alert('존재하지 않는 연락처입니다.')
+                        window.parent.close();
                     }
                 }
             })

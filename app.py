@@ -45,9 +45,9 @@ def view_orders():
     return jsonify({'result': 'success', 'all_orders': allorders})
 
 # 내 주문 보기
-@app.route('/order/my', methods=['GET'])
+@app.route('/order/my', methods=['POST'])
 def view_myorder():
-    phone_receive = request.args.get('phone_give')
+    phone_receive = request.form['phone_give']
     myorder = list(db.onepage.find({'phone': phone_receive}, {'_id': False}))
     return jsonify({'result': 'success', 'order': myorder})
 
