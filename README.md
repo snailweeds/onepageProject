@@ -178,3 +178,4 @@ static 폴더 아래에 이미지 파일을 넣고, 각자 프로젝트 HTML의 
 페이스북 og 태그 초기화 하기: https://developers.facebook.com/tools/debug/
 카카오톡 og 태그 초기화 하기: [https://developers.kakao.com/tool/clear/og](https://developers.kakao.com/tool/clear/og)
 ```
+# 파이널 프로젝트 -OnePage_ShoppingMall
